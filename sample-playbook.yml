@@ -1,0 +1,12 @@
+---
+- name: This Playbook is to create user & install git
+  hosts: webservers
+  become: true
+  tasks:
+  - name: Creating user captain-america
+    user:
+      name: captain-america
+
+  - name: Installing git
+    yum:
+      name: git
