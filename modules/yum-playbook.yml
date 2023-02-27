@@ -1,0 +1,16 @@
+---
+- name: This Playbook is to install software tools
+  hosts: webservers
+  become: true
+  tasks:
+  - name: Installing tree
+    yum:
+      name: tree
+
+  - name: Installing git
+    yum:
+      name: git
+  
+  - name: Installing nano
+    yum:
+      name: nano

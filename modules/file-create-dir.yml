@@ -1,0 +1,15 @@
+---
+- name: this playbook creates a file or dir
+  hosts: all
+  #  become: true
+  #  gather_facts: no
+  tasks:
+  - name: creating a dir
+    file:
+      path: /home/ansible/movies
+      state: directory 
+  
+  - name: creating a file
+  file:
+    path: /home/ansible/movies/ironman
+    state: touch
