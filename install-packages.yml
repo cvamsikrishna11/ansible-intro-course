@@ -1,0 +1,19 @@
+---
+- name: to install the required packages
+  hosts: webservers
+  become: true
+
+  tasks:
+    - name: installing httpd
+      yum: 
+        name: [ 'httpd', 'gcc', 'wget', 'telnet', 'gzip'] 
+        state: installed         
+
+    - name: installing git
+      yum:
+        name: git
+        state: installed
+    - name: installing the Tree package
+      yum: 
+        name: tree
+        state: installed

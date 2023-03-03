@@ -1,0 +1,13 @@
+---
+- name: this playbook creates a file or directory
+  hosts: webservers
+
+  tasks:
+    - name: creating a dir
+      file: 
+        path: /home/ansible/dir1
+        state: directory
+    - name: creating a file
+      file: 
+        path: /home/ansible/dir1/demofile.txt
+        state: touch

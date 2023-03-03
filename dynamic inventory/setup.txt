@@ -1,0 +1,6 @@
+sudo yum –y install python3-pip
+sudo yum –y install python3-pip
+
+
+# execute the above command in the ansible control node, where the ansibl is installed
+sudo sed -i 's/#enable_plugins = host_list, virtualbox, yaml, constructed/enable_plugins = aws_ec2/g' /etc/ansible/ansible.cfg

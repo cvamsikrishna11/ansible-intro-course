@@ -1,0 +1,19 @@
+---
+- name: sample playbook
+  hosts: all
+  become: true
+  tasks:
+    - name: install httpd
+      yum:
+          name: httpd
+          state: latest
+
+    - name: run httpd
+      service:
+              name: httpd
+              state: started
+
+    - name: create content
+      copy:
+          content: "GM! Hello from JJTech"
+          dest: /var/www/html/index.html
