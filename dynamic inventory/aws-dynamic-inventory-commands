@@ -4,13 +4,13 @@ sudo sed -i 's/^#inventory\s*=.*/inventory       = \/home\/ansadmin\/aws_ec2.yml
 
 
 # to get the list of instance as per the inventory
-ansible-inventory -i aws_ec2.yaml --list
+ansible-inventory -i aws_ec2.yml --list
 
 # to check as the graphical representation
 ansible-inventory --graph
 
 # deploy ansible playbook with password
-ansible-playbook -i aws_ec2.yaml web-app.yml --extra-vars "ansible_user=ansadmin ansible_password=ansadmin hosts=tag_Environment_dev"
+ansible-playbook -i aws_ec2.yml web-app.yml --extra-vars "ansible_user=ansadmin ansible_password=ansadmin hosts=tag_Environment_dev"
 
 # deploy ansible playbooks without password, after setting up the ssh
-ansible-playbook -i aws_ec2.yaml web-app.yml --extra-vars "hosts=tag_Environment_dev"
+ansible-playbook -i aws_ec2.yml web-app.yml --extra-vars "hosts=tag_Environment_dev"
