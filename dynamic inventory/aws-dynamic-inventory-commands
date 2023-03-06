@@ -1,3 +1,8 @@
+
+# to replace the default inventory file
+sudo sed -i 's/^#inventory\s*=.*/inventory       = \/home\/ansadmin\/aws_ec2.yml/' /etc/ansible/ansible.cfg
+
+
 # to get the list of instance as per the inventory
 ansible-inventory -i aws_ec2.yaml --list
 
