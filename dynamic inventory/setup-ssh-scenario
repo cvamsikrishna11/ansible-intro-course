@@ -1,0 +1,16 @@
+
+# Create an ssh key in control node server and copy it to host node servers
+# This will create .ssh folder (/home/ansadmin/.ssh). Hit enter all the way through
+ssh-keygen -t rsa 
+
+# Provide the full access only to the user and remove for others
+chmod 700 /home/ansadmin/.ssh 
+
+# Copy the ssh keys to the ansible host nodes
+ssh-copy-id ansadmin@ip address of you ansible-node1
+ssh-copy-id ansadmin@ip address of you ansible-node2
+
+# Try to test the ssh connectivity without using the password
+ssh ansadmin@ip address of you ansible-node1
+ssh ansadmin@ip address of you ansible-node2
+
