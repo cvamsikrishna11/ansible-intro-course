@@ -1,0 +1,11 @@
+---
+- name: Setting up webservers
+  hosts: webservers
+  become: true
+  vars:
+    user: john
+
+  tasks:
+  - name: creating user
+    ansible.builtin.user:
+      name: "{{user}}"

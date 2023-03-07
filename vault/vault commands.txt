@@ -1,0 +1,35 @@
+# Ref: https://docs.ansible.com/ansible/latest/vault_guide/vault.html
+
+# create: to create ansible vault file in the encrypted format
+ansible-vault create create-user.yml
+setup the password as: abc123
+fill create-user.yml content in the vi editor
+
+# view: to view the data of encrypted file
+ansible-vault view create-user.yml
+enter password when prompted
+
+# edit: to edit encrypted file
+ansible-vault edit create-user.yml
+enter password when prompted
+
+#decrypt: to decrypt an encrypted file
+ansible-vault decrypt create-user.yml
+enter password when prompted
+cat create-user.yml
+
+# encrypt: to encrypt an unecrypted file
+ansible-vault encrypt create-user.yml
+enter password when prompted
+cat create-user.yml
+
+# --ask-vault-pass: to provide password while running playbook
+to run the encrypted playbook
+ansible-playbook create-user.yml --ask-vault-pass
+enter password when prompted
+
+
+# --vault-password-file: to pass a vault password throuh file
+to run the encrypted playbook, by passing the password from a file
+create a file vault_pass.txt and put the vault password in it
+ansible-playbook create-user.yml --vault-password-file vault_pass.txt

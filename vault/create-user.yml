@@ -1,0 +1,11 @@
+---
+- name: Creating user playbook
+  hosts: webservers
+  become: true
+
+
+  tasks:
+  - name: creating user
+    ansible.builtin.user:
+      name: mark
+      password: "mark"
