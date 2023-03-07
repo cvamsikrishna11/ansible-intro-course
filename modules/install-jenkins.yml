@@ -1,0 +1,41 @@
+---
+- name: Downloading and Installing Jenkins
+  hosts: webservers
+  become: true
+
+  tasks:
+  - name: Updating all software packages
+    ansible.builtin.yum:
+      name: '*'
+      state: latest
+
+  - name: Add the Jenkins repo
+    ansible.builtin.get_url:
+      url: https://pkg.jenkins.io/redhat-stable/jenkins.repo
+      dest: /etc/yum.repos.d/jenkins.repo   
+
+  - name: Import a key file from Jenkins-ci
+    ansible.builtin.rpm_key:
+      state: present
+      key: https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+  - name: Upgrade file
+    ansible.builtin.yum:
+      name: '*'
+      state: latest
+
+  - name: Install Java
+    ansible.builtin.yum:
+      name: java-11-openjdk-devel
+      state: latest
+
+  - name: Install Jenkins
+    ansible.builtin.yum:
+      name: jenkins
+      state: latest
+
+  - name: Start Jenkins as a service
+    ansible.builtin.systemd:
+      name: jenkins
+      state: started
+      enabled: true
