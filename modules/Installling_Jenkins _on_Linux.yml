@@ -1,0 +1,40 @@
+---
+- name: Installing Jenkins
+  hosts: webservers
+  become: true
+  
+  tasks:
+
+  - name: yum update (install all packages in the instance)
+    ansible.builtin.yum:
+      name: "*"
+      state: latest  
+
+  - name: Add Jenkins Repo
+    ansible.builtin.get_url:
+      url: https://pkg.jenkins.io/redhat-stable/jenkins.repo 
+      dest: /etc/yum.repos.d/jenkins.repo
+
+  - name: Import jenkins key from url
+    ansible.builtin.rpm_key:
+      state: present
+      key: https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+  - name: Install Java
+    ansible.builtin.yum:
+      name: java-1.8.0-openjdk
+      state: present
+
+  - name: Install Jenkins
+    ansible.builtin.yum:
+      name: jenkins
+      state: latest     
+
+  - name: Daemon-reload to pick up config change
+    ansible.builtin.systemd:
+      daemon_reload: true
+
+  - name: Start Jenkins
+    ansible.builtin.systemd:
+      name: jenkins
+      enabled: true       
