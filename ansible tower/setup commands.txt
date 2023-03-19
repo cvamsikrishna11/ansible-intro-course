@@ -1,0 +1,20 @@
+Launch Red Hat Enterprise Linux 8 instance with t2.xlarge & enable http port
+
+sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
+
+sudo yum install ansible -y
+
+sudo yum install wget -y
+
+wget https://releases.ansible.com/ansible-tower/setup/ansible-tower-setup-latest.tar.gz
+
+tar xvzf ansible-tower-setup-latest.tar.gz
+
+cd ansible-tower-setup-3.8.6-2
+
+vi inventory
+
+# fill the admin_password = 'ansible',  pg_password='ansible'
+
+# either the below command or run sudo ./setup.sh
+sudo ./setup.sh
