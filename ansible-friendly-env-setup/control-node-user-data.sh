@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo amazon-linux-extras install ansible2 -y
 sudo useradd ansible
 sudo echo ansible:ansible | chpasswd
 sudo echo "ansible ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
