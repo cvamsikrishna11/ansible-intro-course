@@ -1,0 +1,36 @@
+Ansible ad-hoc commands & intro to Modules
+https://docs.ansible.com/ansible/latest/command_guide/intro_adhoc.html
+https://docs.ansible.com/ansible/2.9/modules/list_of_all_modules.html
+
+ansible [pattern] -m [module] -a "[module options]"
+Ex: ansible webservers -m ping
+
+
+Ping 
+ansible webserver -m ping
+ansible all -m ping 
+
+COPY
+ansible all -m copy -a "src=/home/ec2-user/movies dest=/tmp"
+
+Command
+ansible all -m "command" -a "touch abc"
+ansible webservers -m command -a "date"
+ansible webservers -m command -a "uptime"
+ansible webservers -m command -a "whoami"
+ansible webservers -m command -a "pwd"
+
+Stat
+ansible all -m stat -a "path=/etc/hosts"
+
+Yum
+ansible all -m yum -a "name=git" -b
+-b means to become root
+
+
+User
+ansible all -m user -a "name=vamsi" -b
+
+Setup
+ansible all -m setup
+
