@@ -1,0 +1,20 @@
+--- 
+- name: "Configuring web server"
+  hosts: webservers
+  become: true
+
+  tasks:
+  - name: Install the latest version of Apache
+    ansible.builtin.yum:
+      name: httpd
+      state: latest
+
+  - name: Start service httpd, if not started
+    ansible.builtin.service:
+      name: httpd
+      state: started
+
+  - name: Copy using inline content
+    ansible.builtin.copy:
+      content: 'Hello from Victorious batch!'
+      dest: /var/www/html/index.html

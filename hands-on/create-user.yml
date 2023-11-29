@@ -1,0 +1,17 @@
+--- 
+- name: "Our first ansible playbook"
+  hosts: all
+  become: true
+
+  tasks:
+  - name: Add the user 'johnd' with a specific uid and a primary group of 'admin'
+    ansible.builtin.user:
+      name: johnd
+      comment: John Doe
+      uid: 1040
+  
+  - name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
+    ansible.builtin.file:
+      path: /home/ansible/foo.conf
+      state: touch
+      mode: u=rw,g=r,o=r
