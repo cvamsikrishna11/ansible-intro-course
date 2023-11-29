@@ -26,6 +26,6 @@
 
   - name: Copy project files into dedicated directory
     ansible.builtin.copy:
-      src: /home/ansible/ecommerce-web-app/server1/*
+      src: /home/ansible/ecommerce-web-app/server1/
       dest: /var/www/html/
       remote_src: yes
