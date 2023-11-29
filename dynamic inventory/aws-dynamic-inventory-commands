@@ -7,7 +7,7 @@ sudo sed -i 's/^#inventory\s*=.*/inventory       = \/home\/ansadmin\/aws_ec2.yml
 ansible-inventory -i aws_ec2.yml --list
 
 # to check as the graphical representation
-ansible-inventory --graph
+ansible-inventory -i aws_ec2.yml --graph
 
 # deploy ansible playbook with password
 ansible-playbook -i aws_ec2.yml web-app.yml --extra-vars "ansible_user=ansadmin ansible_password=ansadmin hosts=tag_Environment_dev"

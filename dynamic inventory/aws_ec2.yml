@@ -17,3 +17,7 @@ filters:
 keyed_groups:
   - key: tags
     prefix: tag
+
+
+
+# Ref: https://docs.ansible.com/ansible/latest/collections/amazon/aws/aws_ec2_inventory.html
