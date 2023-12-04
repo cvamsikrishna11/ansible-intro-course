@@ -1,10 +1,11 @@
 ---
-- name: Creating user playbook
+- name: Setting up webservers
   hosts: webservers
   become: true
+  vars:
+    user: "ironman"
 
   tasks:
   - name: creating user
     ansible.builtin.user:
-      name: mark
-      password: "mark"
+      name: "{{user}}"

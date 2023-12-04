@@ -1,0 +1,31 @@
+--- 
+- name: "Configuring web server"
+  hosts: "{{hosts}}"
+  become: true
+
+  tasks:
+  - name: Install the latest version of Apache
+    ansible.builtin.yum:
+      name: httpd
+      state: latest
+
+  - name: Start service httpd, if not started
+    ansible.builtin.service:
+      name: httpd
+      state: started
+
+  - name: Install the latest version of git
+    ansible.builtin.yum:
+      name: git
+      state: latest
+
+  - name: Clone a repo with separate git directory
+    ansible.builtin.git:
+      repo: https://github.com/cvamsikrishna11/ecommerce-web-app.git
+      dest: /home/ansible/ecommerce-web-app
+
+  - name: Copy project files into dedicated directory
+    ansible.builtin.copy:
+      src: /home/ansible/ecommerce-web-app/server1/
+      dest: /var/www/html/
+      remote_src: yes

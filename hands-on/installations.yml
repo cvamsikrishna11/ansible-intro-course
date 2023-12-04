@@ -1,0 +1,11 @@
+---
+- name: Setting up webservers
+  hosts: webservers
+  become: true
+  vars:
+    software: httpd
+
+  tasks:
+  - name: installations
+    ansible.builtin.yum:
+      name: "{{software}}"
