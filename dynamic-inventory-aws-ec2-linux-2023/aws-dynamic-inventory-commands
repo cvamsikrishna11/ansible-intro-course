@@ -1,3 +1,6 @@
+# Ref: https://docs.ansible.com/ansible/latest/collections/amazon/aws/aws_ec2_inventory.html
+# Ref: https://devopscube.com/setup-ansible-aws-dynamic-inventory/
+
 # to get the list of instance as per the inventory
 ansible-inventory -i aws_ec2.yml --list
 

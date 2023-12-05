@@ -1,0 +1,9 @@
+sudo su ansadmin
+cd
+sudo yum install ansible -y
+ansible-config init --disabled > /etc/ansible/ansible.cfg
+sudo yum install python-pip -y
+pip install boto3
+sed -i "s/.*;host_key_checking=True/host_key_checking=False/g" ansible.cfg
+sed -i "s/.*;enable_plugins=host_list, script, auto, yaml, ini, toml/enable_plugins=aws_ec2/g" ansible.cfg
+ansible-galaxy collection install amazon.aws
