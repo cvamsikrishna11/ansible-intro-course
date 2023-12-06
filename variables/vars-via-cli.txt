@@ -1,3 +1,4 @@
 # CLI varialbes can be passed from anywhere as long as the variable defined.
 # CLI varialbes holds most priority than the other variables 
 ansible-playbook create-user.yml --extra-vars "user=john100"
+ansible-playbook create-user.yml -e "user=john100"
