@@ -1,0 +1,7 @@
+# to create ansible role
+ansible-galaxy init role-folder-name
+
+# useful links
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html
+
+https://docs.ansible.com/ansible/2.9/user_guide/playbooks_reuse.html#:~:text=While%20it%20is%20possible%20to,includes%2C%20imports%2C%20and%20roles.

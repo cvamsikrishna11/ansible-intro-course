@@ -1,0 +1,8 @@
+--- 
+- name: "Configuring web server"
+  hosts: webservers
+  become: true
+
+  roles:
+    - setup-httpd
+    - setup-user

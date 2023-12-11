@@ -1,0 +1,41 @@
+- name: Configure web server and setup user
+  hosts: webservers
+  become: true
+
+  tasks:
+    - name: Install the latest version of Apache
+      ansible.builtin.yum:
+        name: httpd
+        state: latest
+
+    - name: Start service httpd, if not started
+      ansible.builtin.service:
+        name: httpd
+        state: started
+
+    - name: Install the latest version of git
+      ansible.builtin.yum:
+        name: git
+        state: latest
+
+    - name: Clone a repo with separate git directory
+      ansible.builtin.git:
+        repo: https://github.com/cvamsikrishna11/ecommerce-web-app.git
+        dest: /home/ansible/ecommerce-web-app
+
+    - name: Copy project files into dedicated directory
+      ansible.builtin.copy:
+        src: /home/ansible/ecommerce-web-app/server1/
+        dest: /var/www/html/
+        remote_src: yes
+
+    - name: Create user
+      ansible.builtin.user:
+        name: "{{ user }}"
+        shell: /bin/bash
+
+    - name: Add user to the root group
+      ansible.builtin.user:
+        name: "{{ user }}"
+        groups: root
+        append: yes

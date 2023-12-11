@@ -10,7 +10,7 @@ sudo -u ansible ssh-keygen -t rsa -f /home/ansible/.ssh/id_rsa -q -N ""
 sudo chmod 700 /home/ansible/.ssh
 sudo chmod 600 /home/ansible/.ssh/id_rsa
 # Array of remote node IP addresses
-REMOTE_NODES=("172.31.42.112" "172.31.38.84") # Replace & add more IPs as needed
+REMOTE_NODES=("172.31.42.112") # Replace & add more IPs as needed
 sudo yum install expect -y
 # Loop through each IP address
 for REMOTE_NODE in "${REMOTE_NODES[@]}"; do
