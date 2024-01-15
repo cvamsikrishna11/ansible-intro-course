@@ -1,0 +1,23 @@
+---
+- name: Creating more than one user using variables
+  hosts: webservers
+  become: true
+  vars:
+    users:
+      - Ben
+      - Penn
+      - James
+      - Simon
+      - David
+      - King
+      - Cyborg
+      
+  tasks:
+   - name: Add several users
+     ansible.builtin.user:
+      name: "{{ item }}"
+      state: present
+     loop: "{{users}}"
+
+
+      
